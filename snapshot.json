@@ -1,0 +1,12 @@
+{
+  "high_cut": 100,
+  "last_connect_feedback": [],
+  "last_connect_sensors": [
+    "18:04:ED:EB:4B:8E"
+  ],
+  "local_time": "2025-04-09-22-40-12",
+  "low_cut": 10,
+  "notch": "50 hz",
+  "save_mode": "xlsx",
+  "trial_name": "Trial_44"
+}

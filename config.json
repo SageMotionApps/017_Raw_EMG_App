@@ -1,0 +1,10 @@
+{
+  "high_cut": 100,
+  "last_connect_sensors": [
+    "88:6B:0F:4F:A2:23"
+  ],
+  "local_time": "",
+  "low_cut": 10,
+  "save_mode": "xlsx",
+  "trial_name": "Trial_1"
+}

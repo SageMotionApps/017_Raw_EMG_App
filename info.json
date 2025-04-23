@@ -1,0 +1,90 @@
+{
+  "user_guide_file": "RAW_IMU_EMG_APP_guide.pdf",
+  "app_name": "Raw IMU EMG App",
+  "app_description": "This app collects and logs raw data from IMU (100 Hz) and EMG sensors (500 Hz) in real time. It also provides bandpass filtering and notch filtering for EMG signals, as well as RMS envelope calculation. The app allows users to save the processed data in CSV, HDF5, or XLSX format.",
+  "app_id": "017",
+  "app_version": "1_0",
+  "version_id": "01710",
+  "parameters_setting": [
+    [
+      "Band Filter Settings",
+      {
+        "source": "low_cut",
+        "title": "Low Cut",
+        "type": "float",
+        "validation": [
+          0,50
+        ],
+        "description": "Low cut frequency for Butterworth filter (Hz), default 10. Must be lower than high cut frequency."
+      },
+      {
+      "source": "high_cut",
+      "title": "High Cut",
+        "type": "float",
+        "validation": [
+          0,240
+        ],
+        "description": "High cut frequency for Butterworth filter (Hz), default 100. Must be higher than low cut frequency and below Nyquist frequency (250 Hz for 500 Hz sampling rate)."
+      },
+      {
+        "source": "notch",
+        "title": "Notch",
+        "type": "combo",
+        "validation": [
+          "50 hz", "60 hz"
+        ],
+        "description": "Notch filter frequency (Hz), default 50. Must be 50 or 60 Hz for power line noise removal."
+        }
+    ],
+    [
+      "Save Options",
+      {
+        "source": "save_mode",
+        "title": "Save Mode",
+        "type": "combo",
+        "validation": [
+          "csv",
+          "h5",
+          "xlsx"
+        ],
+        "description": "Save file in specified format"
+      }
+    ]
+  ],
+  "user_fields": [
+    {
+      "name": "Time(s)",
+      "data_type": "float",
+      "size": 1
+    },
+    {
+      "name": "Raw_EMG(mV)",
+      "data_type": "float",
+      "size": 1,
+      "description": "Raw EMG signal before any filtering (mV)"
+    },
+    {
+      "name": "Bandpass_Filter(mV)",
+      "data_type": "float",
+      "size": 1,
+      "description": "EMG signal after Butterworth bandpass filter (mV)"
+    },
+    {
+      "name": "Notch_Filter(mV)",
+      "data_type": "float", 
+      "size": 1,
+      "description": "EMG signal after notch filter for power line noise removal (mV)"
+    },
+    {
+      "name": "RMS_Envelope(mV)",
+      "data_type": "float",
+      "size": 1,
+      "description": "RMS envelope of the processed EMG signal (mV)"
+    }
+    
+  ],
+  "sensors": ["IMU_Sensor"],
+  "feedback": [],
+  "emg_datarate": 500,
+  "imu_datarate": 100
+}

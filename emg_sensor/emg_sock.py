@@ -32,17 +32,15 @@ class sock:
         for device in devices:
             # Check if manufacturer is not None before using 'in' operator
             if device.manufacturer and "FTDI" in device.manufacturer:
-                # Check if serial_number is not None before using 'in' operator
-                if device.serial_number and "ifocus" in device.serial_number.lower():
-                    try:
-                        print(f"Found potential EMG device: {device.device}")
-                        dev = Serial(port=device.device, baudrate=921600, timeout=1)
-                        dev.close()
-                        ret.append(device.device)
-                        print(f"Successfully connected to: {device.device}")
-                    except serialutil.SerialException as e:
-                        print(f"Failed to connect to {device.device}: {e}")
-                        continue
+                try:
+                    print(f"Found potential EMG device: {device.device}")
+                    dev = Serial(port=device.device, baudrate=921600, timeout=1)
+                    dev.close()
+                    ret.append(device.device)
+                    print(f"Successfully connected to: {device.device}")
+                except serialutil.SerialException as e:
+                    print(f"Failed to connect to {device.device}: {e}")
+                    continue
         print(f"Found {len(ret)} EMG devices.")
         
         if len(ret) == 0:
